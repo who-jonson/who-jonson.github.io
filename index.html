@@ -9,21 +9,41 @@
 
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
-    <link rel="preload" href="./dist/js/app.js" as="script">
     <link rel="preload" href="./dist/css/app.css" as="style">
 
     <!-- Scripts -->
+    <script src="./dist/js/manifest.js" defer></script>
+    <script src="./dist/js/vendor.js" defer></script>
     <script src="./dist/js/app.js" defer></script>
     <!-- Styles -->
     <link rel="stylesheet" href="./dist/css/app.css">
 </head>
 <body>
     <div id="who-jonson">
-        <page-header></page-header>
 
-        <welcome></welcome>
+        <div class="loading-overlay" v-if="overlayActive">
+            <div class="loading-overlay-container">
+                <swapping-squares-spinner
+                    :animation-duration="1000"
+                    :size="66"
+                    color="#0bceaf">
+                </swapping-squares-spinner>
+            </div>
+        </div>
 
-        <page-footer></page-footer>
+        <div class="content-container" v-else>
+            <page-header></page-header>
+
+            <welcome></welcome>
+
+            <about></about>
+
+            <page-footer></page-footer>
+        </div>
     </div>
+
+    <!-- Static Scripts -->
+    <script src="./dist/plugins/wow.min.js"></script>
+    <script src="./static/js/wow.js"></script>
 </body>
 </html>
